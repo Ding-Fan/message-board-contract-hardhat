@@ -32,6 +32,12 @@ async function main() {
   await contract.deployed()
 
   console.log("MessageBoard address: ", contract.address)
+
+  const nftContractFactory = await ethers.getContractFactory("NftCollection")
+  const nftContract = await nftContractFactory.deploy()
+  await nftContract.deployed()
+
+  console.log("NFT Contract address:", nftContract.address)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

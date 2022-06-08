@@ -39,3 +39,17 @@ describe("MessageBoard", function () {
     // expect(await greeter.greet()).to.equal("Hola, mundo!");
   })
 })
+
+describe("mint a nft", () => {
+  it("should generate a base64 metadata json of NFT", async () => {
+    const NftCollection = await ethers.getContractFactory("NftCollection")
+    const nftCollection = await NftCollection.deploy()
+    await nftCollection.deployed()
+
+    let txn = await nftCollection.makeNft()
+    await txn.wait()
+
+    txn = await nftCollection.makeNft()
+    await txn.wait()
+  })
+})
